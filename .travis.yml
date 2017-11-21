@@ -4,9 +4,12 @@ group: deprecated-2017Q2
 services:
     - docker
 env:
-    - OS_TYPE=centos:7
+    - OS_TYPE=centos:7 
+    - OS_TYPE=centos:7 BUILD_TYPE=DEBUG
     - OS_TYPE=opensuse
+    - OS_TYPE=opensuse BUILD_TYPE=DEBUG
     - OS_TYPE=debian:8
+    - OS_TYPE=debian:8 BUILD_TYPE=DEBUG
 before_install:
     - .github/runchecks
     - docker pull ${OS_TYPE}
