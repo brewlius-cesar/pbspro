@@ -14,6 +14,8 @@ if [ ${BUILD_TYPE} == "DEBUG" ]; then
                                --with-database-user=postgres 
     ${DOCKER_EXEC} make
     ${DOCKER_EXEC} make install
+    ${DOCKER_EXEC} /bin/bash -c "rpmspec --requires -q pbspro.spec | sed 's/\(.*$\)/\"\1\"/' | xargs yum install -y"
+    ${DOCKER_EXEC} /opt/pbs/libexec/pbs_postinstall
 else
     ${DOCKER_EXEC} ./configure
     ${DOCKER_EXEC} make dist

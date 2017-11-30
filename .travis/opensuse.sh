@@ -15,6 +15,7 @@ if [ ${BUILD_TYPE} == "DEBUG" ]; then
                                --with-database-user=postgres 
     ${DOCKER_EXEC} make
     ${DOCKER_EXEC} make install
+    ${DOCKER_EXEC} /bin/sh -c "zypper -n install \$(rpmspec --requires -q pbspro.spec)"
 else
     ${DOCKER_EXEC} ./configure
     ${DOCKER_EXEC} make dist
